@@ -139,8 +139,8 @@ class Student(Person):
         result += f'\nЗавершенные курсы: {", ".join(self.finished_courses)}'
         return result
 
-    def set_grade(self, course1, grade, **kwargs):
-        return super().set_grade(course1, grade, self.courses_in_progress)
+    def set_grade(self, course, grade, **kwargs):
+        return super().set_grade(course, grade, self.courses_in_progress)
 
     def rate_hw(self, lector, course, grade):
         return Person.give_grade(lector, course, grade, Lector, self.finished_courses)
@@ -161,7 +161,7 @@ class Lector(Mentor):
 
 
 class Reviewer(Mentor):
-    def set_grade(self, course1, grade, **kwargs):
+    def set_grade(self, course, grade, **kwargs):
         ...
 
     def rate_hw(self, student, course, grade):
